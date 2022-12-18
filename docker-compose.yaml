@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+  # Add a Nginx container
+  # Add a pgAdmin Container
+  # Add Vue Container
+  frontend:
+    image: 'frontend:1.0'
+    container_name: frontend
+    depends_on:
+      - netcoreapp
+    build: 
+      context: ./app/ui
+      dockerfile: Dockerfile
+    # To make use of hot-reloads
+    volumes:
+      - ./app/ui/frontend:/app
+    ports:
+      - '3000:3000'
+
+  netcoreapp:
+    image: 'netcoreapp:1.0'
+    container_name: netcoreapp
+    depends_on:
+      - postgres
+    build: 
+      context: ./app/api
+      dockerfile: Dockerfile
+    environment:
+      - DB_CONNECTION_STRING="host=postgres;port=5432;database=psqldatabase;username=psqladmin;password=psqlpasswd"
+    ports:
+      - '5001:80'
+
+  # Postgres database container 
+  postgres:
+    image: 'postgres:latest'
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=psqladmin
+      - POSTGRES_PASSWORD=psqlpasswd
+      - POSTGRES_DB=psqldatabase
+    # To store database data
+    volumes:
+      - ./app/db/pgdata:/var/lib/postgresql/data
+      - ./app/db/pgconf:/etc/postgresql
+    ports:
+      - '5432:5432'
