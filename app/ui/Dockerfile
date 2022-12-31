@@ -8,7 +8,9 @@ RUN apk add git
 
 # Install dependencies first, as they change less often than code.
 COPY ./frontend/package.json .
-COPY ./frontend/package-lock.json .
+COPY ./frontend/yarn.lock .
+
+RUN yarn install
 RUN npm install
 
 COPY ./frontend .

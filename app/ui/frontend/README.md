@@ -1,6 +1,6 @@
-# Nuxt 3 Minimal Starter
+# How to use Vuetify with Nuxt 3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Tutorial - https://codybontecou.com/how-to-use-vuetify-with-nuxt-3.html
 
 ## Setup
 
@@ -39,4 +39,4 @@ Locally preview production build:
 npm run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
