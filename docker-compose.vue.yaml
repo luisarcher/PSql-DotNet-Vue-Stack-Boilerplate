@@ -4,13 +4,12 @@ services:
   frontend:
     image: 'frontend:1.0'
     container_name: frontend
-    # depends_on:
-      # - netcoreapp
     build: 
       context: ./app/ui
       dockerfile: Dockerfile
-     # To make use of hot-reloads
+    # command: npm run dev
     volumes:
       - ./app/ui/frontend:/app
+      - /app/node_modules
     ports:
       - '3000:3000'
