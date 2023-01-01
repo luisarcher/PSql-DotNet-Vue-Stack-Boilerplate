@@ -15,7 +15,7 @@ This repository contains a starter stack for jump-starting projects using Docker
 
 docker-compose up -d
 
-Alternatively, you can launch **start.bat** if you're on Windows.
+Alternatively, you can launch **docker-compose.full.up.bat** if you're on Windows.
 
 4. The stack should now be up and running. You can check the status of the containers by running:
 
@@ -27,7 +27,7 @@ To stop the stack, simply run the following command from the root directory:
 
     docker-compose down
 
-Alternatively, you can launch **stop.bat** if you're on Windows.
+Alternatively, you can launch **docker-compose.full.down.bat** if you're on Windows.
 
 ## Accessing the PostgreSQL database
 

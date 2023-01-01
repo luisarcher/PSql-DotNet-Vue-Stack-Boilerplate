@@ -9,7 +9,7 @@ services:
     build: 
       context: ./app/ui
       dockerfile: Dockerfile
-    # To make use of hot-reloads
+     # To make use of hot-reloads
     volumes:
       - ./app/ui/frontend:/app
     ports:
