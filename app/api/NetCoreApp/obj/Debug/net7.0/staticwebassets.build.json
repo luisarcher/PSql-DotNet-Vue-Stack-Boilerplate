@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "IMTS8LXQmLWt2LK+9H9QRh6xIzIfsBVE+UlwVVi6q08=",
+  "Source": "NetCoreApp",
+  "BasePath": "_content/NetCoreApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

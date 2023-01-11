@@ -1,10 +1,18 @@
 <template>
-  <div class="d-flex align-center flex-column">
-    <v-icon>mdi-home</v-icon>
-    <v-card width="400">
-      <v-card-title>This is a title</v-card-title>
-      <v-card-subtitle>This is a subtitle</v-card-subtitle>
-      <v-card-text> This is content </v-card-text>
-    </v-card>
+
+  <div class="m-0 bg-gray-50">
+    <div id="sidenav-main">
+      <div class="h-20">
+
+      </div>
+    </div>
+    <div>
+      <h1 class="text-3xl font-bold underline">
+        H!
+      </h1>
+    </div>
+
+      
   </div>
+  
 </template>

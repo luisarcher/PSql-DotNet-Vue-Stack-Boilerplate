@@ -4,7 +4,6 @@ services:
 
   # Add a Nginx container
   # Add a pgAdmin Container
-  # Add Vue Container
   frontend:
     image: 'frontend:1.0'
     container_name: frontend
@@ -46,3 +45,19 @@ services:
       - ./app/db/pgconf:/etc/postgresql
     ports:
       - '5432:5432'
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: psqlpasswd
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+     
+volumes:
+  pgadmin-data:

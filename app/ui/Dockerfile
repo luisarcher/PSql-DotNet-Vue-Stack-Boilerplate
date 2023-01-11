@@ -11,11 +11,9 @@ COPY ./frontend/package.json .
 COPY ./frontend/yarn.lock .
 
 # RUN yarn install
-RUN npm install
+RUN yarn install && yarn cache clean
 
 COPY ./frontend/ ./
-
-RUN npm install && npm cache clean --force
 
 EXPOSE 3000
 
@@ -24,4 +22,4 @@ ENV NUXT_PORT=3000
 
 ENV PATH ./node_modules/.bin/:$PATH
 
-ENTRYPOINT ["npm", "run", "dev"]
+# ENTRYPOINT ["yarn", "dev"]

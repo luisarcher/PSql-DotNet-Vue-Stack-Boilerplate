@@ -7,7 +7,7 @@ services:
     build: 
       context: ./app/ui
       dockerfile: Dockerfile
-    # command: npm run dev
+    command: npm run dev
     volumes:
       - ./app/ui/frontend:/app
       - /app/node_modules
