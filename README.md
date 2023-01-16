@@ -2,7 +2,7 @@
 
 This repository contains a starter stack for jump-starting projects using Docker, PostgreSQL, Vue Nuxt3 + TailwindCSS, and DotNet 7.0.
 
-TODO: I will slowly add more and more basic core features and code examples. I am not a web developer, but I will read read read, so I want to garantee that I will cover the best best best best practices. I will add a couple of comments at the end of this readme.
+I will slowly add more and more basic core features and code examples along with my learning process. I am not a web developer, just passionately curions to experiment stuff. I am actively reading a couple of things in order to bring the best practices into this. I will be updating this readme.
 
 ### Prerequisites
 
@@ -13,7 +13,7 @@ TODO: I will slowly add more and more basic core features and code examples. I a
 
 1. Clone this repository to your local machine.
 2. Navigate to the root directory of the repository.
-3. Run the following command to build and start the Docker containers (3):
+3. Run the following command to build and start the Docker containers (4):
 
     docker-compose up -d
 
@@ -45,24 +45,47 @@ You can use any PostgreSQL client, such as pgAdmin, to connect to the database. 
     Admin: admin@admin.com
     Password: psqlpasswd
 
-## Accessing the Vue Nuxt3 application
+## Vue3 Nuxt3 application
 
 The Vue Nuxt3 application is served at http://localhost:3000.
-Accessing the DotNet 7.0 application
+
+## DotNet 7.0 application
+
+The connection string can be defined in appsettings.json as:
+
+    "ConnectionStrings": {
+        "WebApiDatabase": "host=postgres;port=5432;database=psqldatabase;username=psqladmin;password=psqlpasswd"
+    },
+
+To generate EF Core migrations:
+
+    dotnet tool install -g dotnet-ef
+    dotnet ef migrations add InitialCreate
+    dotnet ef database update
+
 
 The DotNet 7.0 application is served at http://localhost:5001.
 
-## Key notes
+
+
+## Developer notes
+
+These are just some notes from my learning process that might as well be useful to you.
+
+### Backend - netcoreapp
 
 - NetCoreApp project file is at ./app/api/NetCoreApp
 - app.sln is created at ./app/api
 - Dockerfile is at ./app/api
 (Apparently, visual studio looks for Dockerfile in the same directory of the .sln file, hence, the above structure. Visual Studio has not been used to create this project though)
+- ~~I have not applied this same principle for NetCoreApp Application as you cannot make use of Hot-reload, it needs to be compiled and published, so we can just rebuild the image. I am not sure if it's worth to create a volume, I am a noob, I will try it / think about creating a volume for .cs code.~~
+It does support hot reload, I have to figure out how to properly do it with docker.
+- Current user data is based on a tutorial from: https://jasonwatmore.com/post/2022/03/15/net-6-crud-api-example-and-tutorial
+
+### Frontend - frontend
 
 - During the building of **frontend** App, source code files are copied to a /app folder. This is also mapped to a Volume on docker-compose file to allow Hot-reload during development.
-
-- I have not applied this same principle for NetCoreApp Application as you cannot make use of Hot-reload, it needs to be compiled and published, so we can just rebuild the image. I am not sure if it's worth to create a volume, I am a noob, I will try it / think about creating a volume for .cs code.
-
+- Currently learning from: https://www.youtube.com/watch?v=tGhMaMIYRiI&list=PL4cUxeGkcC9haQlqdCQyYmL_27TesCGPC&index=8
 
 ## Todo
 
@@ -74,8 +97,3 @@ The DotNet 7.0 application is served at http://localhost:5001.
  - Investigate how to properly do TDD and setup the testing process
  - Maybe automate some stuff with Jenkins or github actions / workflow
  
-
- ## Notes of my learning process
- - Key notes above are more important than these notes.
- - I wanted to use the Vuetify UI kit, but feeling the tailwindCSS more.
- - Seems like both Nuxt3 and NetCore supports hot-reload. I could use it locally but struggled using it with docker, something to investigate later.
